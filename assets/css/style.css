@@ -1,0 +1,8 @@
+:root {
+  --grey-color: rgb(166, 170, 173);
+  --bg-form: #2a2a2a;
+}
+
+myForm {
+  background-color: var(--bg-form);
+}
