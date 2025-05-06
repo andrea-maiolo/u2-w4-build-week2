@@ -24,3 +24,11 @@
 .bgGrey {
   background-color: var(--bg-form);
 }
+
+.custom-grey {
+  color: var(--icon-color);
+}
+
+#sidebar {
+  z-index: 999;
+}
