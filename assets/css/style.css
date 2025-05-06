@@ -24,3 +24,18 @@
 .bgGrey {
   background-color: var(--bg-form);
 }
+
+#searchBar {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: max-width 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+#searchBar.show {
+  max-width: 300px;
+  opacity: 1;
+  transform: scaleX(1);
+}
