@@ -20,3 +20,7 @@
 .icon-bg {
   fill: var(--icon-color);
 }
+
+.bgGrey {
+  background-color: var(--bg-form);
+}
