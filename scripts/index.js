@@ -92,7 +92,28 @@ const myFun = function () {
       console.error("Fetch error:", error);
     });
 };
+/*
+const myFun2 = function () {
+  fetch(url, options)
+    .then((response) => {
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("Prodotti non trovati.");
+        } else if (response.status >= 500) {
+          throw new Error("Errore del server, riprova più tardi.");
+        }
+        throw new Error("Errore nella richiesta dei prodotti.");
+      }
+      return response.json();
+    })
+    .then((ogg2) => {
 
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
+*/
 window.onload = function () {
   myFun();
 };
