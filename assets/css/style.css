@@ -93,3 +93,8 @@ body {
   border-radius: 4px;
   border: 2px solid #1a1a1a;
 }
+/* card search rotation */
+#img-card-search {
+  transform: rotate(24deg);
+  transform-origin: top left;
+}
