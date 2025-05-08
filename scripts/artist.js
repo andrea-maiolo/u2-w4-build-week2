@@ -282,6 +282,25 @@ const songPlayer = function (s, i) {
                 </button>
             </div>`;
   player.appendChild(divPlayer);
+
+  const right = document.getElementById("clnRight");
+  const ctnRight = document.createElement("div");
+  right.innerHTML = ``;
+  ctnRight.style.backgroundImage = `url(${s.data[i].album.cover_xl})`;
+  ctnRight.style.backgroundSize = "cover";
+  ctnRight.style.backgroundRepeat = "no-repeat";
+  ctnRight.style.backgroundPosition = "center";
+  ctnRight.style.height = "100%";
+
+  ctnRight.innerHTML = `<div class="d-flex flex-column justify-between h-100">
+    
+    <p class="text-white">${s.data[i].album.title}</p>
+    <div class="mt-auto">
+    <h5 class="text-white">${s.data[i].title}</h5>
+    <p class="text-white">${s.data[i].artist.name}</p>
+    </div>
+  </div>`;
+  right.appendChild(ctnRight);
 };
 
 const myFunArtist = function () {
@@ -308,8 +327,8 @@ const myFunArtist = function () {
 
       cardcenter.innerHTML = `
       <div class="col text-white pt-5 ">
-                            <p class="m-0"><svg data-encore-id="verifiedBadge" role="img" aria-hidden="false"
-                                    class="e-9890-icon e-9890-baseline encore-announcement-set b0NcxAbHvRbqgs2S8QDg"
+                            <p class="mb-0"><svg data-encore-id="verifiedBadge" role="img" aria-hidden="false"
+                                    class=" me-1 e-9890-icon e-9890-baseline encore-announcement-set b0NcxAbHvRbqgs2S8QDg"
                                     viewBox="0 0 24 24" style="fill:#4CB3FF; height: 20;">
 
                                     <path
