@@ -6,6 +6,7 @@ const url2 = `https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`;
 const rowCardLeft = document.getElementById("rowCardLeft");
 const copertina = document.getElementById("copertina");
 const listSong = document.getElementById("listSong");
+const urlPlaylist = "https://deezerdevs-deezer.p.rapidapi.com/playlist/155";
 
 const options = {
   method: "GET",
@@ -14,9 +15,9 @@ const options = {
     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
   },
 };
-
+// funzione per colonna sinistra
 const myFun = function () {
-  fetch(url, options)
+  fetch(urlPlaylist, options)
     .then((response) => {
       if (!response.ok) {
         if (response.status === 404) {
@@ -29,19 +30,23 @@ const myFun = function () {
       return response.json();
     })
     .then((ogg2) => {
-      ogg2.data.forEach((songs) => {
+      console.log("playlist", ogg2);
+
+      ogg2.tracks.data.forEach((track) => {
+        console.log(track);
+
         const cardLeft = document.createElement("div");
         cardLeft.className = "col-12";
 
         cardLeft.innerHTML = `
-      <div class="d-flex">
-      <img src="${songs.album.cover_small}" alt="songs.album.cover" style="width: 3rem; height: auto" class="me-2 rounded" />
-      <div>
-      <a class="text-decoratione-none " href="../album.html?=${songs.album.id}" ><h6 class="d-inline-block text-white mb-1">${songs.album.title}</h6></a>
-      <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?=${songs.artist.id}"><p style="color: #6c757d" class="mb-0">${songs.artist.name}</p></a>
-      </div>
-      </div>
-      `;
+  <div class="d-flex">
+  <img src="${track.album.cover_small}" alt="songs.album.cover" style="width: 3rem; height: auto" class="me-2 rounded" />
+  <div>
+  <a class="text-decoratione-none " href="../album.html?=${track.album.id}" ><h6 class="d-inline-block text-white mb-1">${track.album.title}</h6></a>
+  <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?=${track.artist.id}"><p style="color: #6c757d" class="mb-0">${track.artist.name}</p></a>
+  </div>
+  </div>
+  `;
         rowCardLeft.appendChild(cardLeft);
       });
     })
@@ -50,6 +55,42 @@ const myFun = function () {
     });
 };
 
+// const myFun = function () {
+//   fetch(url, options)
+//     .then((response) => {
+//       if (!response.ok) {
+//         if (response.status === 404) {
+//           throw new Error("Prodotti non trovati.");
+//         } else if (response.status >= 500) {
+//           throw new Error("Errore del server, riprova più tardi.");
+//         }
+//         throw new Error("Errore nella richiesta dei prodotti.");
+//       }
+//       return response.json();
+//     })
+//     .then((ogg2) => {
+//       ogg2.data.forEach((songs) => {
+//         const cardLeft = document.createElement("div");
+//         cardLeft.className = "col-12";
+
+//         cardLeft.innerHTML = `
+//       <div class="d-flex">
+//       <img src="${songs.album.cover_small}" alt="songs.album.cover" style="width: 3rem; height: auto" class="me-2 rounded" />
+//       <div>
+//       <a class="text-decoratione-none " href="../album.html?=${songs.album.id}" ><h6 class="d-inline-block text-white mb-1">${songs.album.title}</h6></a>
+//       <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?=${songs.artist.id}"><p style="color: #6c757d" class="mb-0">${songs.artist.name}</p></a>
+//       </div>
+//       </div>
+//       `;
+//         rowCardLeft.appendChild(cardLeft);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Fetch error:", error);
+//     });
+// };
+
+// riempie lista canzoni dell artista
 const myFunSongs = function (nameA) {
   const artistTracks = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${nameA}`;
 
@@ -118,6 +159,7 @@ const myFunSongs = function (nameA) {
     });
 };
 
+// riempie player con info della canzone
 const songPlayer = function (s, i) {
   console.log(s);
   console.log(i);
@@ -303,6 +345,7 @@ const songPlayer = function (s, i) {
   right.appendChild(ctnRight);
 };
 
+// riempie centro copertina con info artista
 const myFunArtist = function () {
   fetch(url2, options)
     .then((response) => {
