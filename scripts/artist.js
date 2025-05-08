@@ -110,19 +110,21 @@ const myFunSongs = function (nameA) {
       }
 
       const songA = document.querySelectorAll(".song");
-      songA.forEach((s) => {
+      songA.forEach((s, index) => {
         s.addEventListener("click", function () {
-          songPlayer(artN, i);
+          songPlayer(artN, index);
         });
       });
     });
 };
+
 const songPlayer = function (s, i) {
   console.log(s);
   console.log(i);
   const player = document.getElementById("player");
   const divPlayer = document.createElement("div");
-  divPlayer.className = "col-12";
+  player.innerHTML = ``;
+  divPlayer.className = "row align-items-center";
   divPlayer.innerHTML = `<div class="col-3 text-white">
                 <div class="row align-items-center">
                     <div class="col-4">
@@ -132,7 +134,8 @@ const songPlayer = function (s, i) {
                         <div class="row align-items-center">
                             <div class="col py-3">
                                 <h3 class="m-0">${s.data[i].title}</h3>
-                                <p>${s.data.i.artist.name}</p>
+                                <p>${s.data[i].artist.name}</p>
+
                             </div>
                             <div class="col d-flex align-items-center">
                                 <svg data-encore-id="icon" role="img" aria-hidden="true"
@@ -278,6 +281,7 @@ const songPlayer = function (s, i) {
                     </svg>
                 </button>
             </div>`;
+  player.appendChild(divPlayer);
 };
 
 const myFunArtist = function () {
