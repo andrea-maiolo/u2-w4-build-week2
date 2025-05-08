@@ -50,6 +50,8 @@ const id = params.get("albumId");
 const url2 = `https://deezerdevs-deezer.p.rapidapi.com/album/${id}`;
 
 const grandeContainer = document.getElementById("grandeContainer");
+const piccoloContainer = document.getElementById("piccoloContainer");
+const olSongs = document.getElementById("olSongs");
 
 const albumFun = function () {
   fetch(url2, options)
@@ -93,7 +95,7 @@ const albumFun = function () {
 
       divPlayer.innerHTML = `    
               <div class="col d-flex my-3">
-                <button class="btn border-0 bg-success rounded-circle p-3">
+                <button class="btn border-0 rounded-circle py-2" style="background-color:#1ED760">
                   <svg
                     data-encore-id="icon"
                     role="img"
@@ -101,7 +103,7 @@ const albumFun = function () {
                     class="e-9890-icon e-9890-baseline"
                     viewBox="0 0 16 16"
                     style="fill: black"
-                    height="20"
+                    height="16"
                   >
                     <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
                   </svg>
@@ -173,34 +175,26 @@ const albumFun = function () {
                 </button>
               </div>`;
 
-      const divSongList = document.createElement("div");
-      divSongList.className = "row";
+      console.log(album);
+      console.log(album.tracks.data);
+      let i = 1;
+      album.tracks.data.forEach((song) => {
+        const li = document.createElement("li");
+        li.className = "d-flex my3 ";
 
-      divSongList.innerHTML = `
-              <ul>
-                <li>
-                  <div class="col d-flex custom-grey border-bottom">
-                    <h6># Titolo</h6>
+        const duration = song.duration;
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
 
-                    <svg
-                      data-encore-id="icon"
-                      role="img"
-                      aria-hidden="true"
-                      class="ms-auto e-9890-icon e-9890-baseline"
-                      viewBox="0 0 16 16"
-                      style="fill: #6c757d; height: 20"
-                    >
-                      <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path>
-                      <path d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"></path>
-                    </svg>
-                  </div>
-                </li>
-                <li class="d-flex my-3">
+        li.innerHTML = `
+
                   <div class="col-10 d-flex text-white">
-                    <div>
-                      <p class="fw-semibold m-0">Title song</p>
-                      <p class="m-0 custom-grey">Artist</p>
-                    </div>
+                  <p class="mb-0 me-2">${i}</p>
+                        <div>
+                          <p class="fw-semibold mb-0">${song.title}</p>
+                          <p class="mb-0 custom-grey">${song.artist.name}</p>
+                        </div>
+                    
                   </div>
                   <div class="col-2 d-flex justify-content-between text-white">
                     <svg
@@ -217,14 +211,15 @@ const albumFun = function () {
                         d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z"
                       ></path>
                     </svg>
-                    <p>2:45</p>
+                    <p>${minutes}:${seconds}</p>
                   </div>
-                </li>
-              </ul>`;
+        `;
+        i++;
+        olSongs.appendChild(li);
+      });
 
       grandeContainer.appendChild(divTitolo);
       grandeContainer.appendChild(divPlayer);
-      grandeContainer.appendChild(divSongList);
     })
     .catch((error) => {
       console.error("Fetch error:", error);
