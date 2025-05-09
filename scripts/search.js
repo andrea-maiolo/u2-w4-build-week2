@@ -54,6 +54,7 @@ const superContainer = document.getElementById("superContainer");
 
 function eseguiRicerca() {
   const query = document.getElementById("search").value.trim();
+  console.log("hello");
 
   const urlquery = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`;
 
@@ -71,9 +72,9 @@ function eseguiRicerca() {
     })
     .then((ricerca) => {
       console.log(ricerca);
+      superContainer.innerHTML = "";
 
       ricerca.data.forEach((a) => {
-        superContainer.innerHTML = "";
         const div = document.createElement("div");
         div.className = "col-12 col-sm-6 col-lg-4 col-xl-3";
 

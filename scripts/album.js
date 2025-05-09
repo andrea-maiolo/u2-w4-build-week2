@@ -88,7 +88,7 @@ const songPlayer = function (s, i) {
   const divPlayer = document.createElement("div");
   player.innerHTML = ``;
   divPlayer.className = "row align-items-center";
-  divPlayer.innerHTML = `<div class="col-3 text-white">
+  divPlayer.innerHTML = `<div class="d-none d-md-block col-3 text-white">
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img src="${s.cover}" class="img-fluid p-4" alt="imgage brano">
@@ -117,7 +117,7 @@ const songPlayer = function (s, i) {
                     </div>
                 </div>
             </div>
-            <div class="col-6 text-white px-5">
+            <div class="col text-white px-5">
                 <div class="col d-flex justify-content-center my-2">
                     <button class="btn">
                         <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-9890-icon e-9890-baseline"
@@ -173,7 +173,7 @@ const songPlayer = function (s, i) {
                     <p class="m-0">${minutes}:${seconds}</p>
                 </div>
             </div>
-            <div class="col-3 text-white d-flex justify-content-center align-items-center">
+            <div class="d-none d-md-block col-3 text-white d-flex justify-content-center align-items-center">
                 <button class="btn">
                     <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-9890-icon e-9890-baseline"
                         viewBox="0 0 16 16" height="15
