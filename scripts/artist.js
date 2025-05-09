@@ -42,8 +42,8 @@ const myFun = function () {
   <div class="d-flex">
   <img src="${track.album.cover_small}" alt="songs.album.cover" style="width: 3rem; height: auto" class="me-2 rounded" />
   <div>
-  <a class="text-decoratione-none " href="../album.html?=${track.album.id}" ><h6 class="d-inline-block text-white mb-1">${track.album.title}</h6></a>
-  <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?=${track.artist.id}"><p style="color: #6c757d" class="mb-0">${track.artist.name}</p></a>
+  <a class="text-decoratione-none " href="../album.html?albumId=${track.album.id}" ><h6 class="d-inline-block text-white mb-1">${track.album.title}</h6></a>
+  <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?artistId=${track.artist.id}"><p style="color: #6c757d" class="mb-0">${track.artist.name}</p></a>
   </div>
   </div>
   `;
