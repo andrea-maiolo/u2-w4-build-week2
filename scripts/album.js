@@ -297,6 +297,16 @@ const songPlayer = function (s, i) {
   });
 };
 
+// random color
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 // riempie colonna centrale
 const albumFun = function () {
   fetch(url2, options)
@@ -313,7 +323,9 @@ const albumFun = function () {
     })
     .then((album) => {
       const divTitolo = document.createElement("div");
-      divTitolo.className = "row bg-success align-items-center rounded py-4";
+
+      divTitolo.className = "row align-items-center rounded py-4";
+      divTitolo.style.backgroundColor = getRandomColor();
 
       const duration = album.duration;
       const ore = Math.floor(duration / 3600); // 1 ora
