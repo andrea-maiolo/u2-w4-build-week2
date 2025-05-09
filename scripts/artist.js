@@ -250,7 +250,7 @@ const songPlayer = function (s, i) {
                 <div class="col d-flex justify-content-center align-items-center">
                     <p class="m-0" id="start" style="visibility: hidden;">00:00</p>
                     <div class="progress mx-3" style="height: 5px; width: 100%;">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" id="progress"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <p class="m-0">${minutes}:${seconds}</p>
@@ -305,7 +305,7 @@ const songPlayer = function (s, i) {
                     </svg>
                 </button>
                 <div class="progress" style="height: 5px; width: 100%;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width:0%" aria-valuenow="0" id="progress"
+                    <div class="progress-bar bg-success" role="progressbar" style="width:20%" aria-valuenow="0" "
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="btn">
@@ -376,7 +376,8 @@ const songPlayer = function (s, i) {
 
       const current = setInterval(() => {
         start.innerHTML = `00:${String(Math.floor((audioPlayer.currentTime + 1) % 60)).padStart(2, "0")}`;
-        const percent = (audioPlayer.currentTime / duration) * 100;
+        const percent = (Math.floor(audioPlayer.currentTime) / 30) * 100 + 3.3;
+        console.log(percent);
         progress.style.width = `${Math.min(percent, 100)}%`;
         progress.setAttribute("aria-valuenow", Math.floor(percent));
       }, 1000);
