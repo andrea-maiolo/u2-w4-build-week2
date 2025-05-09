@@ -46,7 +46,10 @@ const fillSxColumn = function (ogg2) {
     <div class="card mb-3 text-white" style="background-color:#121212">
     <div class="row">
     <div class="col-4">
+        <a href="../album.html?albumId=${track.album.id}">
+
     <img src="${track.album.cover_small}" alt="songs.album.cover" class=" img-fluid rounded w-100">
+    </a>
     </div>
     <div class="col-8 p-0 align-items-baseline">
     <div class="card-body text-truncate w-100 text-white">
