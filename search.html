@@ -83,20 +83,22 @@
           </button>
           <form class="collapse collapse-horizontal d-flex align-items-center" id="searchBar">
             <input type="text" class="bg-transparent border-0" />
-            <svg
-              data-encore-id="icon"
-              role="img"
-              aria-hidden="true"
-              id="specialIcon"
-              class="e-9890-icon e-9890-baseline me-2 border-start p-1 icon-bg"
-              height="30"
-              viewBox="0 0 24 24"
-            >
-              <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"></path>
-              <path
-                d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"
-              ></path>
-            </svg>
+            <a href="./search.html">
+              <svg
+                data-encore-id="icon"
+                role="img"
+                aria-hidden="true"
+                id="specialIcon"
+                class="e-9890-icon e-9890-baseline me-2 border-start p-1 icon-bg"
+                height="30"
+                viewBox="0 0 24 24"
+              >
+                <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"></path>
+                <path
+                  d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"
+                ></path>
+              </svg>
+            </a>
           </form>
         </div>
       </ul>
@@ -160,19 +162,21 @@
 
             <!-- il campo input dovrebbe essere più lungo-->
             <input class="form-control border-0 me-2 bg-transparent icon-bg" id="search" type="search" placeholder="Cosa vuoi ascoltare?" aria-label="Search" />
-            <svg
-              data-encore-id="icon"
-              role="img"
-              aria-hidden="true"
-              class="e-9890-icon e-9890-baseline me-2 border-start ps-1 icon-bg"
-              height="30"
-              viewBox="0 0 24 24"
-            >
-              <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"></path>
-              <path
-                d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"
-              ></path>
-            </svg>
+            <a href="./search.html">
+              <svg
+                data-encore-id="icon"
+                role="img"
+                aria-hidden="true"
+                class="e-9890-icon e-9890-baseline me-2 border-start ps-1 icon-bg"
+                height="30"
+                viewBox="0 0 24 24"
+              >
+                <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"></path>
+                <path
+                  d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9H3.525zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4V2z"
+                ></path>
+              </svg>
+            </a>
           </form>
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -318,7 +322,200 @@
 
         <div class="col-md-9 rounded overflow-scroll custom-scroll" style="background-color: #212121; max-height: 90vh">
           <h1 class="text-white fs-3 my-4 fw-semibold">Browse All</h1>
-          <div class="row gy-4 gx-4" id="superContainer"></div>
+          <div class="row gy-4 gx-4" id="superContainer">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(60, 176, 87)">
+                <h5 class="card-title p-3 text-truncate">Discover Weekly</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-1.jpeg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(143, 95, 160)">
+                <h5 class="card-title p-3 text-truncate">Nija</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-9.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(174, 112, 37)">
+                <h5 class="card-title p-3 text-truncate">Lo-Fi Beats</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-10.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(10, 22, 48)">
+                <h5 class="card-title p-3 text-truncate">Songs to Sing in the Car</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-11.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(115, 19, 19)">
+                <h5 class="card-title p-3 text-truncate">AILOu</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-12.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(141, 173, 23)">
+                <h5 class="card-title p-3 text-truncate">Your Summer Rewind</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-13.jpeg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(87, 19, 196)">
+                <h5 class="card-title p-3 text-truncate">Top Songs Global</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-14.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(4, 71, 42)">
+                <h5 class="card-title p-3 text-truncate">Unlocking Us</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-15.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(132, 34, 129)">
+                <h5 class="card-title p-3 text-truncate">Soul Lounge</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-16.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(157, 105, 13)">
+                <h5 class="card-title p-3 text-truncate">Stress Relief</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-17.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(32, 26, 224)">
+                <h5 class="card-title p-3 text-truncate">Sleep</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-18.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(118, 14, 92)">
+                <h5 class="card-title p-3 text-truncate">Dissect</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-2.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(99, 39, 240)">
+                <h5 class="card-title p-3 text-truncate">Pollen</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-3.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(172, 40, 102)">
+                <h5 class="card-title p-3 text-truncate">Mint</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-4.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(108, 165, 33)">
+                <h5 class="card-title p-3 text-truncate">Viva Latino</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-5.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <div class="card mb-3 position-relative w-100 overflow-hidden border-0" style="height: 175px; background-color: rgb(83, 60, 136)">
+                <h5 class="card-title p-3 text-truncate">are & B</h5>
+                <img
+                  id="img-card-search"
+                  class="position-absolute w-50 rounded"
+                  style="right: -42px; bottom: 10px"
+                  src="./assets/imgs/search/image-6.jpg"
+                  alt="card-search"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

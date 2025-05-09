@@ -73,6 +73,7 @@ function eseguiRicerca() {
       console.log(ricerca);
 
       ricerca.data.forEach((a) => {
+        superContainer.innerHTML = "";
         const div = document.createElement("div");
         div.className = "col-12 col-sm-6 col-lg-4 col-xl-3";
 
