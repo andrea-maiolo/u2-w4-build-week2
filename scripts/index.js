@@ -2,6 +2,19 @@
 // !!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!
+const buttonToggleSidebar = document.getElementById("buttonToggleSidebar");
+const leftSidebarCollapsed = document.getElementById("leftSidebarCollapsed");
+const buttonReverseCollapse = document.getElementById("buttonReverseCollapse");
+const leftSidebar = document.getElementById("leftSidebar");
+
+buttonToggleSidebar.addEventListener("click", function () {
+  leftSidebarCollapsed.classList.add("d-none");
+});
+
+buttonReverseCollapse.addEventListener("click", function () {
+  leftSidebarCollapsed.classList.remove("d-none");
+  leftSidebar.classList.remove("show");
+});
 
 const options = {
   method: "GET",
@@ -21,6 +34,7 @@ const urlPlaylist = "https://deezerdevs-deezer.p.rapidapi.com/playlist/155";
 
 // riempimento colonna sinistra
 const fillSxColumn = function (ogg2) {
+  const listSideBarCollapsed = document.getElementById("listSideBarCollapsed");
   for (let i = 0; i < 15; i++) {
     const track = ogg2.tracks.data[i];
 
@@ -28,15 +42,30 @@ const fillSxColumn = function (ogg2) {
     cardLeft.className = "col-12";
 
     cardLeft.innerHTML = `
-<div class="d-flex">
-<img src="${track.album.cover_small}" alt="songs.album.cover" style="width: 3rem; height: auto" class="me-2 rounded" />
-<div>
-<a class="text-decoratione-none " href="../album.html?albumId=${track.album.id}" ><h6 class="d-inline-block text-white mb-1">${track.album.title}</h6></a>
-<a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?artistId=${track.artist.id}"><p style="color: #6c757d" class="mb-0">${track.artist.name}</p></a>
-</div>
-</div>
-`;
+    <div class="card mb-3 text-white" style="background-color:#121212">
+    <div class="row">
+    <div class="col-4">
+    <img src="${track.album.cover_small}" alt="songs.album.cover" class=" img-fluid rounded w-100">
+    </div>
+    <div class="col-8 p-0 align-items-baseline">
+    <div class="card-body text-truncate w-100 text-white">
+    <a class="text-decoratione-none link-underline link-underline-opacity-0 " href="../album.html?albumId=${track.album.id}"><h6 class="text-white mb-1 text-truncate fs-5">${track.album.title}</h6></a>
+    <a class="text-decoratione-none link-underline link-underline-opacity-0 " href="../artist.html?artistId=${track.artist.id}"><p style="color: #6c757d" class="mb-0 text-truncate">${track.artist.name}</p></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    `;
+
     rowCardLeft.appendChild(cardLeft);
+
+    // genera album per colonna collasata
+    const iconAlbum = document.createElement("li");
+    iconAlbum.classList.add("mb-1");
+    iconAlbum.innerHTML = `
+    <img src="${track.album.cover_small}" alt="songs.album.cover" class="rounded" />
+    `;
+    listSideBarCollapsed.appendChild(iconAlbum);
   }
 };
 
@@ -62,13 +91,13 @@ const fillCenterColumn = function (ogg2) {
   for (let i = 38; i <= 43; i++) {
     const songs = ogg2.tracks.data[i];
     const cardSectionListenNow = document.createElement("div");
-    cardSectionListenNow.className = "col-lg-2";
+    cardSectionListenNow.className = "col-6 col-sm-4 col-md-3 col-lg-2";
 
     cardSectionListenNow.innerHTML = `
                   <div class="card border-0" style="background-color: #212121">
                       <img src="${songs.album.cover_medium}" class="card-img-top" alt="songs.album.cover" />
                       <div class="card-body px-0">
-                       <a class="text-decoratione-none link-underline link-underline-opacity-0 text-truncate" href="../album.html?albumId=${songs.album.id}" > <p class="card-text custom-grey">${songs.album.title}</p></a>
+                       <a class="text-decoratione-none link-underline link-underline-opacity-0" href="../album.html?albumId=${songs.album.id}" > <p class="card-text custom-grey text-truncate">${songs.album.title}</p></a>
                       </div>
                     </div>
                   `;
@@ -77,13 +106,13 @@ const fillCenterColumn = function (ogg2) {
   for (let i = 44; i <= 49; i++) {
     const songs = ogg2.tracks.data[i];
     const cardSectionListenRecently = document.createElement("div");
-    cardSectionListenRecently.className = "col-lg-2";
+    cardSectionListenRecently.className = "col-6 col-sm-4 col-md-3 col-lg-2";
 
     cardSectionListenRecently.innerHTML = `
                   <div class="card border-0" style="background-color: #212121">
                       <img src="${songs.album.cover_medium}" class="card-img-top" alt="songs.album.cover" />
                       <div class="card-body px-0">
-                        <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?artistId=${songs.artist.id}"><p class="card-text custom-grey">${songs.artist.name}</p></a>
+                        <a class="text-decoratione-none link-underline link-underline-opacity-0 "href="../artist.html?artistId=${songs.artist.id}"><p class="card-text custom-grey  text-truncate">${songs.artist.name}</p></a>
                       </div>
                     </div>
                   `;
