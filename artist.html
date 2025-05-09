@@ -157,18 +157,9 @@
           <!-- ho dovuto impostare dropstart per evitare la scrollbar orizzontale-->
           <!-- il bottone dovrebbe avere un'ombra grigia-->
           <li class="nav-item dropstart ms-2">
-            <a class="nav-link dropdown-toggle rounded-pill bg-success text-light" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false" style="padding-block: 2px">
+            <a class="nav-link rounded-pill bg-success text-light" href="#" role="button" style="padding-block: 2px">
               Team 6
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
           </li>
         </ul>
       </div>
@@ -178,21 +169,59 @@
   <div class="container-fluid">
     <div class="row">
       <!--             Colonna sinistra       -->
-      <div class="col-md-3 rounded overflow-auto custom-scroll" style="background-color: #121212; max-height: 90vh">
-        <div class="sticky-top" style="background-color: #121212">
-          <div class="d-flex justify-content-between text-white py-3">
-            <p class="fw-semibold mb-0">La Tua Libreria</p>
-            <div class="justify-content-between">
-              <button class="btn rounded-circle text-white px-2 py-1 me-2" style="background-color: #2a2a2a">
-                <i class="bi bi-plus-lg"></i>
+      <div class="col-1 overflow-auto custom-scroll" style="max-height: 90vh" id="leftSidebarCollapsed">
+        <nav>
+          <ul class="nav flex-column" id="listSideBarCollapsed">
+            <li class="sticky-top bg-black">
+              <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#leftSidebar"
+                aria-expanded="false" aria-controls="leftSidebar" id="buttonToggleSidebar">
+                <span class="Gj4v3278oIywygaUyBbt"><svg data-encore-id="icon" role="img" aria-hidden="true"
+                    class="e-9890-icon e-9890-baseline" style="fill: white" height="20" viewBox="0 0 24 24">
+                    <path
+                      d="M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z">
+                    </path>
+                  </svg>
+                </span>
               </button>
-              <i class="bi bi-arrows-angle-expand"></i>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-md-3 rounded overflow-auto custom-scroll collapse collapse-horizontal" id="leftSidebar"
+        style="background-color: #121212; max-height: 90vh">
+        <div class="sticky-top" style="background-color: #121212">
+          <div class="row justify-content-between text-white py-3 align-items-baseline">
+            <div class="col-12 col-md-2">
+              <button class="btn" id="buttonReverseCollapse">
+                <span class="Gj4v3278oIywygaUyBbt"><svg data-encore-id="icon" role="img" aria-hidden="true"
+                    class="e-9890-icon e-9890-baseline" style="fill: white" height="20" viewBox="0 0 24 24">
+                    <path
+                      d="M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z">
+                    </path>
+                  </svg></span>
+              </button>
+            </div>
+            <div class="col-12 col-md-6">
+              <p class="fw-semibold mb-0">La Tua Libreria</p>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="justify-content-between">
+                <button class="btn rounded-circle text-white px-2 py-1 me-2" style="background-color: #2a2a2a">
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+                <i class="bi bi-arrows-angle-expand"></i>
+              </div>
             </div>
           </div>
-          <div class="mb-2">
-            <button class="btn rounded-pill text-white me-1" style="background-color: #2a2a2a">Playlist</button>
-            <button class="btn rounded-pill text-white mx-1" style="background-color: #2a2a2a">Artisti</button>
-            <button class="btn rounded-pill text-white ms-1" style="background-color: #2a2a2a">Album</button>
+          <div class="mb-2 row g-1">
+            <div class="col-4">
+              <button class="btn rounded-pill text-white me-1" style="background-color: #2a2a2a">Playlist</button>
+            </div>
+            <div class="col-4"><button class="btn rounded-pill text-white mx-1"
+                style="background-color: #2a2a2a">Artisti</button></div>
+            <div class="col-4"><button class="btn rounded-pill text-white ms-1"
+                style="background-color: #2a2a2a">Album</button></div>
           </div>
         </div>
 
@@ -222,7 +251,7 @@
             </div>
           </div>
 
-          <div class="row gy-2 overflow-auto custom-scroll" id="rowCardLeft"></div>
+          <div class="row gy-2" id="rowCardLeft"></div>
         </div>
       </div>
 
