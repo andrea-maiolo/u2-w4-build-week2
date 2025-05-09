@@ -2,6 +2,7 @@ const url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem";
 const params = new URLSearchParams(window.location.search);
 const id = params.get("artistId");
 const url2 = `https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`;
+const urlSong = "https://api.deezer.com/track/";
 
 const rowCardLeft = document.getElementById("rowCardLeft");
 const copertina = document.getElementById("copertina");
@@ -163,6 +164,9 @@ const myFunSongs = function (nameA) {
 const songPlayer = function (s, i) {
   console.log(s);
   console.log(i);
+  const duration = `${s.data[i].duration}`;
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
   const player = document.getElementById("player");
   const divPlayer = document.createElement("div");
   player.innerHTML = ``;
@@ -170,16 +174,16 @@ const songPlayer = function (s, i) {
   divPlayer.innerHTML = `<div class="col-3 text-white">
                 <div class="row align-items-center">
                     <div class="col-4">
-                        <img src="${s.data[i].album.cover}" class="img-fluid p-3" alt="imgage brano">
+                        <img src="${s.data[i].album.cover}" class="img-fluid p-4" alt="imgage brano">
                     </div>
                     <div class="col-8">
                         <div class="row align-items-center">
-                            <div class="col py-3">
-                                <h3 class="m-0">${s.data[i].title}</h3>
+                            <div class="col-10 py-3">
+                                <h3 class="m-0 text-truncate">${s.data[i].title}</h3>
                                 <p>${s.data[i].artist.name}</p>
 
                             </div>
-                            <div class="col d-flex align-items-center">
+                            <div class="col-2 d-flex align-items-center">
                                 <svg data-encore-id="icon" role="img" aria-hidden="true"
                                     class="e-9890-icon e-9890-baseline" viewBox="0 0 16 16" style="fill:white"
                                     height="15">
@@ -217,7 +221,8 @@ const songPlayer = function (s, i) {
                             </path>
                         </svg>
                     </button>
-                    <button class="btn bg-light rounded-circle">
+                    
+                    <button class="btn bg-light rounded-circle" id="play">
                         <svg data-encore-id="icon" role="img" aria-hidden="true" class="e-9890-icon e-9890-baseline"
                             viewBox="0 0 16 16" style="fill:black" height="15">
                             <path
@@ -243,12 +248,12 @@ const songPlayer = function (s, i) {
                     </button>
                 </div>
                 <div class="col d-flex justify-content-center align-items-center">
-                    <p class="m-0">0:30</p>
+                    <p class="m-0" id="start" style="visibility: hidden;">00:00</p>
                     <div class="progress mx-3" style="height: 5px; width: 100%;">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <p class="m-0">2:50</p>
+                    <p class="m-0">${minutes}:${seconds}</p>
                 </div>
             </div>
             <div class="col-3 text-white d-flex justify-content-center align-items-center">
@@ -300,7 +305,7 @@ const songPlayer = function (s, i) {
                     </svg>
                 </button>
                 <div class="progress" style="height: 5px; width: 100%;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+                    <div class="progress-bar bg-success" role="progressbar" style="width:0%" aria-valuenow="0" id="progress"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <button class="btn">
@@ -343,6 +348,42 @@ const songPlayer = function (s, i) {
     </div>
   </div>`;
   right.appendChild(ctnRight);
+
+  let isPlaying = false;
+  let audioPlayer = null;
+  const play = document.getElementById("play");
+  const start = document.getElementById("start");
+  const progress = document.getElementById("progress");
+  const playUrl = `${s.data[i].preview}`;
+
+  /* buttonPlay */
+
+  play.addEventListener("click", function () {
+    start.style.visibility = "visible";
+    if (!audioPlayer) {
+      audioPlayer = new Audio(playUrl);
+      player.appendChild(audioPlayer);
+    }
+
+    if (isPlaying === true) {
+      audioPlayer.pause();
+      isPlaying = false;
+
+      play.innerHTML = `<svg data-encore-id="icon" role="img" aria-hidden="true" class="e-9890-icon e-9890-baseline" viewBox="0 0 16 16" style="fill:black; height:20"><path d="M4 1.5v13l10-6.5-10-6.5z"></path></svg>`;
+    } else {
+      audioPlayer.play();
+      isPlaying = true;
+
+      const current = setInterval(() => {
+        start.innerHTML = `00:${String(Math.floor((audioPlayer.currentTime + 1) % 60)).padStart(2, "0")}`;
+        const percent = (audioPlayer.currentTime / duration) * 100;
+        progress.style.width = `${Math.min(percent, 100)}%`;
+        progress.setAttribute("aria-valuenow", Math.floor(percent));
+      }, 1000);
+
+      play.innerHTML = `<svg data-encore-id="icon" role="img" aria-hidden="true" class="e-9890-icon e-9890-baseline" viewBox="0 0 16 16" style="fill:black; height:20"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>`;
+    }
+  });
 };
 
 // riempie centro copertina con info artista
