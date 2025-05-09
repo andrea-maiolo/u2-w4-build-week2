@@ -737,7 +737,9 @@ const fillSxColumn = function (ogg2) {
     const iconAlbum = document.createElement("li");
     iconAlbum.classList.add("mb-1");
     iconAlbum.innerHTML = `
+            <a href="../album.html?albumId=${track.album.id}">
     <img src="${track.album.cover_small}" alt="songs.album.cover" class="rounded" />
+    </a>
     `;
     listSideBarCollapsed.appendChild(iconAlbum);
   }
