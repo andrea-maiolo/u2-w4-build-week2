@@ -98,7 +98,8 @@ function eseguiRicerca() {
     });
 }
 
-document.getElementById("searchButton").addEventListener("click", function () {
+document.getElementById("searchButton").addEventListener("click", function (e) {
+  e.preventDefault();
   eseguiRicerca();
 });
 
